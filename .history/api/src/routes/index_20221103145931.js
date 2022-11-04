@@ -1,9 +1,8 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-require('dotenv').config();
 const axios = require('axios')
-const {API_KEY } = process.env;
+const API_KEY  = process.env;
 
 const router = Router();
 
@@ -11,8 +10,8 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getRecipes = async () => {
-    const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=ef53c8ba85f74f28bebd19436ccfec53&number=100&addRecipeInformation=true`);   
-    const apiRecipes = await getUrl.data.results.map((e) =>{
+    const getUrl = await axios.get(https://api.spoonacular.com/recipes/complexSearch&addRecipeInformation=true?apiKey=API_KEY);
+    const apiRecipes =await getUrl.data.map(e =>{
         return{
             id: e.id,
             name: e.title,
@@ -21,15 +20,7 @@ const getRecipes = async () => {
             healthScore: e.healthScore,
             howToMake: e.analyzedInstructions,
 
-        };
-    });
-    return apiRecipes;
-};
-
-router.get('/', async (req, res) =>{
-    
-    let apiRecipesGet = await getRecipes();
-    res.status(200).send(apiRecipesGet);
-})
-
+        }
+    })
+}
 module.exports = router;
