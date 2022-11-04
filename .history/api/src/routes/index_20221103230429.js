@@ -11,7 +11,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getRecipes = async () => {
-    const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`);   
+    const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=ef53c8ba85f74f28bebd19436ccfec53&number=100&addRecipeInformation=true`);   
     const apiRecipes = await getUrl.data.results.map((e) =>{
         return{
             id: e.id,
@@ -27,13 +27,9 @@ const getRecipes = async () => {
 };
 
 router.get('/', async (req, res) =>{
-    try {
-        let apiRecipesGet = await getRecipes();
-    res.status(200).send(apiRecipesGet);
-    } catch (error) {
-        res.status(404).send(error);
-    }
     
+    let apiRecipesGet = await getRecipes();
+    res.status(200).send(apiRecipesGet);
 })
 
 module.exports = router;
