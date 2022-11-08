@@ -3,7 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 require('dotenv').config();
 const axios = require('axios');
-
+const db = require('../db');
 const {API_KEY } = process.env;
 const {Recipe,TypeOfDiet} = require('../db')
 const router = Router();
@@ -12,7 +12,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getRecipes = async () => {
-    const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`);   
+    const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`);   
     const apiRecipes = await getUrl.data.results.map((e) =>{
         return{
             id: e.id,
@@ -36,39 +36,33 @@ const getRecipes = async () => {
           return apiRecipes;
         };
     
-   
+    
 
 const getRecipesDb = async () => {
   return await Recipe.findAll({
     include:{
         model: TypeOfDiet,
-         attributes:['name'],
+        attributes:['name'],
         through:{
-          attributes: [],
-       }
+            attributes: [],
+        }
 
     }
   })
 
 }
 
-const getAllRecipes = async() =>{
-
-    try {
-        const apiRecipesDetails = await getRecipes();
-    const  dbRecipesDetails = await getRecipesDb();
-    const allRecipesApiDb = apiRecipesDetails.concat(dbRecipesDetails);
-    return allRecipesApiDb;
-
-    } catch (error) {
-        console.log("Error al traer la información de la api mas la db");
-    }
-   } 
+const getAllrecipes = async() =>{
+    const apiRecipesDetails = await getRecipes;
+    const  dbRecipesDetails = await getRecipesDb;
+    const allRecipesApiDb = apiRecipesDetailstr.concat(dbRecipesDetails);
+    return allRecipesApiDb
+}
 
 router.get('/recipes', async (req, res) =>{
     //const name = req.query.name
     try { //if(name)
-        let apiRecipesGet = await getAllRecipes();
+        let apiRecipesGet = await getALLRecipes();
     res.status(200).send(apiRecipesGet);
     } catch (error) {
         res.status(404).send(error);

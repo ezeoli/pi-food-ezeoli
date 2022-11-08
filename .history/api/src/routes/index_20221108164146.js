@@ -52,7 +52,7 @@ const getRecipesDb = async () => {
 
 }
 
-const getAllRecipes = async() =>{
+const getAllrecipes = async() =>{
 
     try {
         const apiRecipesDetails = await getRecipes();
@@ -68,7 +68,7 @@ const getAllRecipes = async() =>{
 router.get('/recipes', async (req, res) =>{
     //const name = req.query.name
     try { //if(name)
-        let apiRecipesGet = await getAllRecipes();
+        let apiRecipesGet = await getAllrecipes();
     res.status(200).send(apiRecipesGet);
     } catch (error) {
         res.status(404).send(error);

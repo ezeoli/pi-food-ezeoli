@@ -52,7 +52,7 @@ const getRecipesDb = async () => {
 
 }
 
-const getAllRecipes = async() =>{
+const getAllrecipes = async() =>{
 
     try {
         const apiRecipesDetails = await getRecipes();

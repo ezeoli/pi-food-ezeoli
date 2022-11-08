@@ -52,18 +52,12 @@ const getRecipesDb = async () => {
 
 }
 
-const getAllRecipes = async() =>{
-
-    try {
-        const apiRecipesDetails = await getRecipes();
+const getAllrecipes = async() =>{
+    const apiRecipesDetails = await getRecipes();
     const  dbRecipesDetails = await getRecipesDb();
     const allRecipesApiDb = apiRecipesDetails.concat(dbRecipesDetails);
-    return allRecipesApiDb;
-
-    } catch (error) {
-        console.log("Error al traer la información de la api mas la db");
-    }
-   } 
+    return allRecipesApiDb
+}
 
 router.get('/recipes', async (req, res) =>{
     //const name = req.query.name
