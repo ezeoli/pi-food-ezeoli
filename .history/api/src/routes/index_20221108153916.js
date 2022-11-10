@@ -12,7 +12,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getRecipes = async () => {
-    const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`);   
+    const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`);   
     const apiRecipes = await getUrl.data.results.map((e) =>{
         return{
             id: e.id,
@@ -36,66 +36,37 @@ const getRecipes = async () => {
           return apiRecipes;
         };
     
-   
+    
 
 const getRecipesDb = async () => {
   return await Recipe.findAll({
     include:{
         model: TypeOfDiet,
-         attributes:['name'],
+        attributes:['name'],
         through:{
-          attributes: [],
-       }
+            attributes: [],
+        }
 
     }
   })
 
 }
 
-const getAllRecipes = async() =>{
-
-    try {
-        const apiRecipesDetails = await getRecipes();
+const getAllrecipes = async() =>{
+    const apiRecipesDetails = await getRecipes();
     const  dbRecipesDetails = await getRecipesDb();
     const allRecipesApiDb = apiRecipesDetails.concat(dbRecipesDetails);
-    return allRecipesApiDb;
-
-    } catch (error) {
-        console.log("Something wrong during request information");
-    }
-   } 
-
-   router.get('/', async (req, res) =>{
-    
-     
-    try { 
-        let apiDbRecipesGet = await getAllRecipes();
-        
-             res.status(200).send(apiDbRecipesGet);
-        }
-        
-     catch (error) {
-        res.status(404).send("Something wrong during loading information ");
-    }
-    
-})
-
-
+    return allRecipesApiDb
+}
 
 router.get('/recipes', async (req, res) =>{
-        const {name} = req.query
-     
-        let apiDbRecipesGetName = await getAllRecipes();
-
-        if(name){
-            let recipeName = await apiDbRecipesGetName.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
-           recipeName.length ?  res.status(200).send(recipeName) :
-           res.status(404).send("The recipe does not exist");
-        }
-        else
-     {
-        res.status(200).send(apiDbRecipesGetName);
-     }
+    //const name = req.query.name
+    try { //if(name)
+        let apiRecipesGet = await getRecipesDb();
+    res.status(200).send(apiRecipesGet);
+    } catch (error) {
+        res.status(404).send(error);
+    }
     
 })
 

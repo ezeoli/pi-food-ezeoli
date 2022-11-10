@@ -88,13 +88,13 @@ router.get('/recipes', async (req, res) =>{
         let apiDbRecipesGetName = await getAllRecipes();
 
         if(name){
-            let recipeName = await apiDbRecipesGetName.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
-           recipeName.length ?  res.status(200).send(recipeName) :
+            let recipeName = await apiDbRecipesGetName.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
+           recipeNAme?  res.status(200).send(recipeName) :
            res.status(404).send("The recipe does not exist");
         }
         else
      {
-        res.status(200).send(apiDbRecipesGetName);
+        res.status(200).send(apiDbRecipesGet);
      }
     
 })

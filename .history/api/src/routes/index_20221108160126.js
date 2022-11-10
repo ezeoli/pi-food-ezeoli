@@ -52,50 +52,21 @@ const getRecipesDb = async () => {
 
 }
 
-const getAllRecipes = async() =>{
-
-    try {
-        const apiRecipesDetails = await getRecipes();
+const getAllrecipes = async() =>{
+    const apiRecipesDetails = await getRecipes();
     const  dbRecipesDetails = await getRecipesDb();
     const allRecipesApiDb = apiRecipesDetails.concat(dbRecipesDetails);
-    return allRecipesApiDb;
-
-    } catch (error) {
-        console.log("Something wrong during request information");
-    }
-   } 
-
-   router.get('/', async (req, res) =>{
-    
-     
-    try { 
-        let apiDbRecipesGet = await getAllRecipes();
-        
-             res.status(200).send(apiDbRecipesGet);
-        }
-        
-     catch (error) {
-        res.status(404).send("Something wrong during loading information ");
-    }
-    
-})
-
-
+    return allRecipesApiDb
+}
 
 router.get('/recipes', async (req, res) =>{
-        const {name} = req.query
-     
-        let apiDbRecipesGetName = await getAllRecipes();
-
-        if(name){
-            let recipeName = await apiDbRecipesGetName.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
-           recipeName.length ?  res.status(200).send(recipeName) :
-           res.status(404).send("The recipe does not exist");
-        }
-        else
-     {
-        res.status(200).send(apiDbRecipesGetName);
-     }
+    //const name = req.query.name
+    try { //if(name)
+        let apiRecipesGet = await getAllRecipes();
+    res.status(200).send(apiRecipesGet);
+    } catch (error) {
+        res.status(404).send(error);
+    }
     
 })
 
