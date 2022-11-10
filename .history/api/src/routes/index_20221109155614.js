@@ -65,37 +65,19 @@ const getAllRecipes = async() =>{
     }
    } 
 
-   router.get('/', async (req, res) =>{
-    
+router.get('/recipes', async (req, res) =>{
+    const name = req.query.name;
      
     try { 
         let apiDbRecipesGet = await getAllRecipes();
-        
-             res.status(200).send(apiDbRecipesGet);
-        }
-        
-     catch (error) {
-        res.status(404).send("Something wrong during loading information ");
-    }
-    
-})
-
-
-
-router.get('/recipes', async (req, res) =>{
-        const {name} = req.query
-     
-        let apiDbRecipesGetName = await getAllRecipes();
-
         if(name){
-            let recipeName = await apiDbRecipesGetName.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
-           recipeName.length ?  res.status(200).send(recipeName) :
-           res.status(404).send("The recipe does not exist");
+            let recipeName = await apiDbRecipesGet.filter(e => e.name.toLocaleLowerCase().include(name.toLocaleLowerCase))
+             recipeName&&res.status(200).send(recipeName)
         }
-        else
-     {
-        res.status(200).send(apiDbRecipesGetName);
-     }
+        
+    } catch (error) {
+        res.status(404).send("The recipe does not exist");
+    }
     
 })
 

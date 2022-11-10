@@ -94,7 +94,7 @@ router.get('/recipes', async (req, res) =>{
         }
         else
      {
-        res.status(200).send(apiDbRecipesGetName);
+        res.status(200).send(apiDbRecipesGet);
      }
     
 })
