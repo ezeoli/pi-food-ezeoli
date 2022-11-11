@@ -27,7 +27,7 @@ router.post('/', async (req,res) => {
         createdInDb
 })
 let dietTypeDb = await TypeOfDiet.findAll({ where:{ name:typeDiets } })
-    createRecipe.addTypeOfDiet(dietTypeDb)
+    await createRecipe.addTypeOfDiet(dietTypeDb)
     res.status(200).send('The new recipe was created')   
 
 }catch(err){
