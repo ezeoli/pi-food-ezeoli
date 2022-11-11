@@ -36,10 +36,12 @@ const {getAllRecipes} = require('../controllers/getAllData');
 
 const recipes = require('./recipes');
 const recipesId = require('./recipesId');
+const createRecipe= require('./createRecipe')
 
 
 router.use('/recipes', recipes)
 router.use('/recipes', recipesId)
+router.use('/recipes', createRecipe)
 
 
 
