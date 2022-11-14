@@ -7,7 +7,7 @@ const axios = require('axios');
 
 const router = Router();
 
-const {getAllRecipes} = require('../controllers/allData');
+const {getAllRecipes} = require('../controllers/AllData');
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 

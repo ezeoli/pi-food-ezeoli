@@ -16,8 +16,7 @@ router.get('/:id', async (req, res) =>{
           const dbId = await Recipe.findByPk(id, { include: TypeOfDiet });  // entonce la busco directo de la base de datos
           res.status(200).json(dbId);
         } catch (err) {
-         
-          res.status(404).send({ message: "The recipe was not found in DB"});
+          console.log(err);
         }
       }
       

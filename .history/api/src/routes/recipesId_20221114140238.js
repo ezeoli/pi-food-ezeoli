@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const axios = require('axios');
-const {getRecipes} = require('../controllers/apiData');
-const {Recipe,TypeOfDiet} = require('../db');
+const {getAllRecipes} = require('../controllers/allData');
+
 const router = Router();
 
 router.get('/:id', async (req, res) =>{
@@ -14,10 +14,9 @@ router.get('/:id', async (req, res) =>{
     if (validate) {
         try {
           const dbId = await Recipe.findByPk(id, { include: TypeOfDiet });  // entonce la busco directo de la base de datos
-          res.status(200).json(dbId);
+          res.status(200).json([dbId]);
         } catch (err) {
-         
-          res.status(404).send({ message: "The recipe was not found in DB"});
+          console.log(err);
         }
       }
       
@@ -26,7 +25,7 @@ router.get('/:id', async (req, res) =>{
         if (id === undefined)
         return res.status(400).send({ message: "ID is required" })
         
-        let apiDbRecipesGetId = await getRecipes();
+        let apiDbRecipesGetId = await getAllRecipes();
         
         let recipeId = await apiDbRecipesGetId.filter(e => e.id ===(parseInt(id)));
         
