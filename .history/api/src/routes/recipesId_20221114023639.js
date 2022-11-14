@@ -17,7 +17,7 @@ router.get('/:id', async (req, res) =>{
         
         let apiDbRecipesGetId = await getAllRecipes();
         
-        let recipeId = await apiDbRecipesGetId.filter(e => e.id ===(parseInt(id)));
+        let recipeId = await apiDbRecipesGetId.filter(e => e.id =(parseInt(id)));
         
         recipeId.length
         ? res.status(200).json(recipeId)
