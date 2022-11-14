@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const {  Op } = require('sequelize');
 const{Recipe,TypeOfDiet} = require('../db')
 const router = Router();
 
@@ -23,11 +24,14 @@ router.post('/', async (req,res) => {
         resume,
         healthScore,
         howToMake,
-       // typeDiet,
+       // typeDiets,
         createdInDb
 })
-let dietTypeDb = await TypeOfDiet.findAll({ where:{ name:typeDiets } })
-    await createRecipe.addTypeOfDiet(dietTypeDb)
+
+
+//where:{name:typeDiets }
+let dietTypeDb = await TypeOfDiet.findAll( { where:{[Op.or]:[{name:typeDiets}]  }})
+     createRecipe.addTypeOfDiet(dietTypeDb)
     res.status(200).send('The new recipe was created')   
 
 }catch(err){
