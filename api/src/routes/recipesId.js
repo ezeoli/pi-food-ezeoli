@@ -10,6 +10,9 @@ router.get('/:id', async (req, res) =>{
     const {id} = req.params
     
     const validate = id.includes("-");
+    
+    if (id === undefined)
+        return res.status(400).send({ message: "ID is required" })
 
     if (validate) {
         try {
@@ -22,10 +25,6 @@ router.get('/:id', async (req, res) =>{
       }
       
   else {
-
-        if (id === undefined)
-        return res.status(400).send({ message: "ID is required" })
-        
         let apiDbRecipesGetId = await getRecipes();
         
         let recipeId = await apiDbRecipesGetId.filter(e => e.id ===(parseInt(id)));
