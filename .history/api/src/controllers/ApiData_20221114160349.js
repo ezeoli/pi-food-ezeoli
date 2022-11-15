@@ -37,10 +37,15 @@ const getRecipes = async () => {
      return recipes.find(recipe => recipe.id === parseInt(id))
   }
     
- 
+  const getRecipeByIdFromDb = (id) => Recipe.findByPk(id, { include: TypeOfDiet })
   
- 
+  const getRecipeByID = (id) => {
+    const  isFromDb = id.includes("-");
+    return isFromDb ? getRecipeByIdFromDb(id)
+    : getRecipeByIdFromApi(id)
+
+  }
   
 
 
-module.exports = {getRecipes, getRecipeByIdFromApi};
+module.exports = {getRecipes, getRecipeByID};

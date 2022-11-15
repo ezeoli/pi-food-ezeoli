@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const axios = require('axios');
-const { getRecipeByID} = require('../controllers/allData');
+const {getRecipes, getRecipeByID} = require('../controllers/apiData');
 
 const router = Router();
 

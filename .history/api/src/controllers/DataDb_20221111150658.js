@@ -16,6 +16,4 @@ const getRecipesDb = async () => {
   
   };
 
-  const getRecipeByIdFromDb = (id) => Recipe.findByPk(id, { include: TypeOfDiet });
-
-module.exports = {getRecipesDb,getRecipeByIdFromDb};
+module.exports = {getRecipesDb};

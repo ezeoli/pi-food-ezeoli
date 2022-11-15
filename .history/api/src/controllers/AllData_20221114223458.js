@@ -14,13 +14,16 @@ const getAllRecipes = async() =>{
     }
    } ;
 
-    
+    try {
      const getRecipeByID = (id) => {
     const  isFromDb = id.includes("-");
     return isFromDb ? getRecipeByIdFromDb(id)
     : getRecipeByIdFromApi(id)
-     };
-   
+
+   }
+    } catch (error) {
+        console.log("Something wrong during request information");
+    };
     
     
 

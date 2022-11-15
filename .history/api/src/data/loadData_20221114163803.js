@@ -1,0 +1,1 @@
+const {createDiet} = require('../data/diets')
