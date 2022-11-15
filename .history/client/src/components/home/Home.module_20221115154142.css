@@ -1,0 +1,38 @@
+.bkg{
+    background-image: url('../../icons/comida.jpg');
+    background-repeat: repeat;
+    background-size: absolute;    
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.cards{
+    display: grid;
+    /* align-items:center; */
+    /* padding: 30px; */
+    justify-content: center;
+    grid-template-columns: fit-content(33%) ;
+    margin-top: 8rem;
+
+}
+.filtrus {
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    flex-direction: column;
+    margin-top: -128px;
+    width: 100vw;
+    height: 8rem;
+    background: linear-gradient(145deg, #3f2918, #4b311d);
+    box-shadow:  20px 10px 40px #271a0f,
+               -20px -06px 40px #654227;
+               border-style: none;
+  }
+  .search{
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    margin-bottom: 20px;
+  }
