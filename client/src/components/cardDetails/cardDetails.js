@@ -15,7 +15,7 @@ const RecipeDetail = ({match}) => {
   
      // useSelector(state => console.log(state))
   
-      React.useEffect(()=> {dispatch(getRecipeDetail(productId))},[]);
+      React.useEffect(()=> {dispatch(getRecipeDetail(productId))},[dispatch]);
   
     return (
 
@@ -35,16 +35,16 @@ const RecipeDetail = ({match}) => {
            })}</h3>
           </div>
           <div className={styles.section2}>
-           <h4 className={styles.typeb}><p className={styles.TitulosDetalles}>DISHTYPE:</p> {p.dishTypes ? p.dishTypes.map(e=>{
+           <h3 className={styles.typeb}><p className={styles.TitulosDetalles}>DISHTYPE:</p> {p.dishTypes ? p.dishTypes.map(e=>{
             return(
               <p key={e.id} >
                 ✔{e}
               </p> 
             )
-           }) :'dish type not found'  }</h4>
+           }) :'dish type not found'  }</h3>
            </div>
            <div className={styles.section3}>
-           <h5 className={styles.typec}><p className={styles.TitulosDetalles}>HEALTHSCORE:</p> {p.healthScore}</h5>
+           <h4 className={styles.typec}><p className={styles.TitulosDetalles}>HEALTHSCORE:</p> {p.healthScore}</h4>
            
            
            
