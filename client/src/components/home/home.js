@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getRecipes } from "../../redux/actions";
 
+
 import Card from "../card/card";
+import NavBar from "../navBar/navBar";
 
 import styles from './Home.module.css'
 
@@ -22,9 +24,10 @@ export default function Home (){
 
     console.log(allRecipes);
     return (
+       
 
-        <div className={styles.bkg}>
-
+     <div className={styles.bkg}>
+             
         <div className={styles.cards}>
                 
             {allRecipes&&allRecipes.map( e => {
@@ -38,6 +41,9 @@ export default function Home (){
                 })  
             }   
          </div>
-        </div>            
+        </div>  
+       
+
+                 
     )     
 }   

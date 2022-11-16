@@ -9,8 +9,13 @@ import RecipeDetail from './components/cardDetails/cardDetails'
 function App() {
   return (
     <BrowserRouter>
+
     <div className="App">
+      
+    
+
       <Switch>
+        
         <Route exact path = '/' component = {Landing}/>
         <Route exact path = '/recipes' component = {Home}/>
         <Route exact path="/recipes/:id" render={( {match}) => <RecipeDetail match={match} />}/>
