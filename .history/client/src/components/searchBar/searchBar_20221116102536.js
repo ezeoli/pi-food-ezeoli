@@ -5,7 +5,7 @@
  
 import styles from './SearchBar.module.css'
 
- export default  function SearchBar ({search , setSearch}) {
+ export default async function SearchBar ({search , setSearch}) {
      const dispatch = useDispatch() 
     
      function handleSubmit (e){

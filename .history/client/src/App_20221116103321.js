@@ -6,20 +6,18 @@ import Home from './components/home/home'
 import RecipeDetail from './components/cardDetails/cardDetails'
 import NavBar from './components/navBar/navBar';
 
-// 
+// <Route path="/recipes"> <NavBar />  </Route>
 function App() {
   return (
     <BrowserRouter>
 
     <div className="App">
       
-      
-   <Route path="/recipes"> <NavBar />  </Route>
+   
 
       <Switch>
         
         <Route exact path = '/' component = {Landing}/>
-        
         <Route exact path = '/recipes' component = {Home}/>
         <Route exact path="/recipes/:id" render={( {match}) => <RecipeDetail match={match} />}/>
       </Switch>
