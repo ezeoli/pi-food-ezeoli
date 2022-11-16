@@ -29,10 +29,11 @@ export default function Home (){
                 
             {allRecipes&&allRecipes.map( e => {
                 return (  
-                    
+                    <Link to={'/recipes/' + e.id}>
                     <Card name={e.name} image={e.image} 
                     diets={e.diets} 
-                    key={e.id}/>   
+                    key={e.id}/>  
+                    </Link>
                     )  
                 })  
             }   

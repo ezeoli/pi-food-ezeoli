@@ -1,0 +1,156 @@
+.dt{
+    background-image: url('../../icons/comida.jpg');
+    background-repeat: repeat;
+    background-size: contain;    
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.imga{
+    height: 10cm;
+    width: 10cm;
+    border-radius: 10px;   
+}
+.typea{
+    border-right: 3px solid rgba( 0, 0, 0, 0.3);
+    border-left: 3px solid rgba( 0, 0, 0, 0.3);
+    color: white; 
+}
+.typeb{ 
+    border-bottom: 3px solid rgba( 0, 0, 0, 0.3);
+    color: white; 
+}
+.typec{
+    color: white; 
+}
+.typed{  
+    border-left: 3px solid rgba( 0, 0, 0, 0.3);
+    color: white; 
+}
+.typee{
+    border-top: 3px solid rgba( 0, 0, 0, 0.3);
+    border-left: 3px solid rgba( 0, 0, 0, 0.3);
+    color: white; 
+}
+.typef{
+    border: 3px solid rgba( 0, 0, 0, 0.3);
+    color: white; 
+    box-shadow: 0px 0px 20px 2px #402F26;
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+}
+
+.title{
+    padding: 10px;    
+    color: #ffffff98;
+
+    box-shadow: 0px 0px 20px 2px #402F26;
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+
+    border-radius: 10px;
+    border: 3px solid rgba( 0, 0, 0, 0.3 );
+}
+
+.btn {
+
+    color: #fff;
+    font-size: 17px;
+    background: #000000;
+    padding: 10px 30px 10px 30px;
+    width: 100vw;
+    text-decoration: none;
+    border-style: none;
+    transition: all 1s ease;
+  }
+  
+  .btn:hover {
+    background: #00000095;
+    cursor: pointer;
+    transition: all 2s;
+  }
+
+
+.tarjetaDeDetalles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+    box-shadow: 0px 0px 20px 2px #402F26;
+    background-color: black;
+    border: 3px solid rgba( 0, 0, 0, 0.3 );
+    border-radius: 10px;
+}
+.TitulosDetalles {
+    color: white;
+}
+
+.carga {
+    margin-top: 250px;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+  .carga1 {
+  animation: 5s;
+  animation-name: carga1;
+}
+
+@keyframes carga1 {
+  0% {
+opacity: 100%;
+  }
+
+    50% {
+opacity: 100%;
+
+  }
+
+  100% {   
+opacity: 100%;
+  }
+}
+
+  .carga2 {
+  animation: 5s;
+  animation-name: carga2;
+}
+
+@keyframes carga2 {
+  0% {
+opacity: 0%;
+  }
+
+    50% {
+opacity: 100%;
+
+  }
+
+  100% {   
+opacity: 100%;
+  }
+}
+
+  .carga3 {
+  animation: 5s;
+  animation-name: carga3;
+}
+
+@keyframes carga3 {
+  0% {
+opacity: 0%;
+  }
+
+    50% {
+opacity: 0%;
+
+  }
+
+  100% {   
+opacity: 100%;
+  }
+}
