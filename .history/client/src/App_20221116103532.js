@@ -13,13 +13,12 @@ function App() {
 
     <div className="App">
       
-      
-   <Route path="/recipes"> <NavBar />  </Route>
+      <Route path="/recipes"> <NavBar />  </Route>
+   
 
       <Switch>
         
         <Route exact path = '/' component = {Landing}/>
-        
         <Route exact path = '/recipes' component = {Home}/>
         <Route exact path="/recipes/:id" render={( {match}) => <RecipeDetail match={match} />}/>
       </Switch>
