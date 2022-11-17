@@ -10,7 +10,7 @@ router.post('/', async (req,res) => {
         healthScore,
        howToMake,
         createdInDb,
-        typeDiets
+        diets
     } = req.body;
 
     if(!name || !resume) {
@@ -30,7 +30,7 @@ router.post('/', async (req,res) => {
 
 
 //where:{name:typeDiets }
-let dietTypeDb = await TypeOfDiet.findAll( { where:{[Op.or]:[{name:typeDiets}]  }})
+let dietTypeDb = await TypeOfDiet.findAll( { where:{[Op.or]:[{name:diets}]  }})
      createRecipe.addTypeOfDiet(dietTypeDb)
     res.status(200).send('The new recipe was created')   
 

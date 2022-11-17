@@ -1,11 +1,11 @@
-import React, { useEffect , useState} from 'react';
+import React, { useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import SearchBar from '../searchBar/searchBar';
 import styles from './NavBar.module.css';
 
 export default function Navbar() {
-    const [show, setShow] = useState('')
+    const [show, setShow] = React.useState('')
     useEffect(() => {}, [show])
     return (
         <header className={styles.headerContainer}>

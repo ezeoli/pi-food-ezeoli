@@ -24,7 +24,7 @@ router.post('/', async (req,res) => {
         resume,
         healthScore,
         howToMake,
-       // diets,
+       // typeDiets,
         createdInDb
 })
 

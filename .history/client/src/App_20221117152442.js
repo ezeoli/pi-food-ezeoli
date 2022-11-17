@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       
       
-   <Route path="/home"> <NavBar />  </Route>
+   <Route path="/recipes"> <NavBar />  </Route>
 
       <Switch>
         
