@@ -30,6 +30,17 @@ const getRecipesDb = async () => {
   return response;
   };
 
-  const getRecipeByIdFromDb = (id) => Recipe.findByPk(id, { include: Diet });
+  const getRecipeByIdFromDb = (id) => Recipe.findByPk(id,
+    {
+      include:{
+          model: Diet,
+           attributes:['name'],
+          through:{
+            attributes: [],
+         }
+  
+      }    
+    }  
+  );
 
 module.exports = {getRecipesDb,getRecipeByIdFromDb};

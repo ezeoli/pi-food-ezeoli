@@ -32,7 +32,7 @@ router.post('/', async (req,res) => {
 
 
 //where:{name:typeDiets }
-let dietTypeDb = await Diet.findAll( { where:{[Op.or]:[{name:typeDiets}]  }})
+let dietTypeDb = await Diet.findAll( { where:{name:typeDiets}})
      createRecipe.addDiet(dietTypeDb)
     res.status(201).send('The new recipe was created')   
 
