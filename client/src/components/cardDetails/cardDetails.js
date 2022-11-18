@@ -15,7 +15,7 @@ const RecipeDetail = ({match}) => {
     //const p= useSelector(state => state.getDetail.find(productId));
   
      // useSelector(state => console.log(state))
-     const details = useSelector(state => state.details)
+   
       
      React.useEffect(()=> {
         dispatch(getRecipeDetail(id))
@@ -65,10 +65,7 @@ const RecipeDetail = ({match}) => {
            </div>
           </div>
           </div>
-         // :
-       //   <Loading/>
-       // }
-           
+       
        </div>
     );
   };
