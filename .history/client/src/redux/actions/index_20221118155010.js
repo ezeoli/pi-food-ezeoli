@@ -3,9 +3,6 @@ export const GET_RECIPES = 'GET_RECIPES';
 export const GET_DETAILS = 'GET_DETAILS';
 export const GET_BY_NAME = 'GET_BY_NAME';
 export const RESET_DETAIL = 'RESET_DETAIL';
-export const FILTER_RECIPES = 'FILTER_RECIPES';
-export const FILTER_ORIGIN = 'FILTER_ORIGIN';
-export const SORT_RECIPES = 'SORT_RECIPES';
 
 export const getRecipes = () => async dispatch => {
         const json = await axios.get(`http://localhost:3001/recipes`);

@@ -16,17 +16,13 @@ export default function Home (){
 
     const dispatch = useDispatch();
     const allRecipes = useSelector((state) => state.recipes )
-    const diets = useSelector(state=>state.diets)
-    const notFound = useSelector(state => state.notFound)
+    
 
     const [filter,setFilter]=useState('')
     const [sort, setSort] = useState('')
     const [filterO, setFilterO] = useState('')
     const[currentPage,setCurrentPage] =useState(1)                                             
-    const[recipesPerPage,setrecipesPerPage]=useState(9)
-    const [order, setOrder] = useState("");
-    const [isActive,setIsActive] = useState(1) 
-                               
+     const[recipesPerPage,setrecipesPerPage]=useState(9)                             
     const indexLastRecipe = currentPage * recipesPerPage                            
     const indexFirstRecipe = indexLastRecipe - recipesPerPage                       
     const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)

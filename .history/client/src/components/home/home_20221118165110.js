@@ -23,10 +23,7 @@ export default function Home (){
     const [sort, setSort] = useState('')
     const [filterO, setFilterO] = useState('')
     const[currentPage,setCurrentPage] =useState(1)                                             
-    const[recipesPerPage,setrecipesPerPage]=useState(9)
-    const [order, setOrder] = useState("");
-    const [isActive,setIsActive] = useState(1) 
-                               
+    const[recipesPerPage,setrecipesPerPage]=useState(9)                             
     const indexLastRecipe = currentPage * recipesPerPage                            
     const indexFirstRecipe = indexLastRecipe - recipesPerPage                       
     const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)
