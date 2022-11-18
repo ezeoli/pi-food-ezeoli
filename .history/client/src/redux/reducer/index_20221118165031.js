@@ -46,7 +46,6 @@ function rootReducer (state=initialState, action) {
             const recipesApi= listedRecipes.filter(recipe => !recipe.createdInDB)
             const recipesDB= listedRecipes.filter(recipe => recipe.createdInDB)
             const filteredDB = recipesDB.filter(recipe => recipe.diets.includes(action.payload))
-            const filtered = action.payload === 'default' ? listedRecipes
             return {
               ...state,
               filtered: filtered,

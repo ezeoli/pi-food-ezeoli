@@ -40,19 +40,6 @@ function rootReducer (state=initialState, action) {
         details: [''],
         notFound:''
         }
-
-        case "FILTER_RECIPES":
-            const listedRecipes= state.allRecipes
-            const recipesApi= listedRecipes.filter(recipe => !recipe.createdInDB)
-            const recipesDB= listedRecipes.filter(recipe => recipe.createdInDB)
-            const filteredDB = recipesDB.filter(recipe => recipe.diets.includes(action.payload))
-            const filtered = action.payload === 'default' ? listedRecipes
-            return {
-              ...state,
-              filtered: filtered,
-              recipes: filtered,
-              notFound: (filtered.length===0) ? 'No se encontraron recetas' : ''
-            };
         case "SORT_RECIPES":
       const sorted = state.filtered.length ? state.filtered : state.allRecipes
       if (action.payload === "asc") (sorted.sort((a,b) => a.name.localeCompare(b.name)))
@@ -76,16 +63,6 @@ function rootReducer (state=initialState, action) {
         recipes: sorted
         
       }    
-      case 'FILTER_ORIGIN':
-      const filtradasPrevias = state.filtered.length ? state.filtered : state.allRecipes      
-      const filtradasDB = filtradasPrevias.filter(recipe => recipe.createdInDb)     
-      if(action.payload === 'db' && filtradasDB.length ) {return ({...state, recipes:filtradasDB, notFound:''})}
-      if(action.payload === 'db' && !filtradasDB.length ) {return ({...state, recipes:[], notFound:'No se encontraron recetas'})}
-      return{
-        ...state,
-        recipes:state.allRecipes
-      }
-      
             default:
                 return state;
         }
