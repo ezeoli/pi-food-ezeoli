@@ -2,6 +2,7 @@ import axios from 'axios';
 export const GET_RECIPES = 'GET_RECIPES';
 export const GET_DETAILS = 'GET_DETAILS';
 export const GET_BY_NAME = 'GET_BY_NAME';
+export const RESET_DETAIL = 'RESET_DETAIL';
 
 export const getRecipes = () => async dispatch => {
         const json = await axios.get(`http://localhost:3001/recipes`);
@@ -30,4 +31,10 @@ export const getRecipesByName = (name) => async dispatch =>{
         type : GET_BY_NAME,
         payload: json.data
     })
-}
+};
+
+export function resetDetail (){
+    return{
+        type: RESET_DETAIL
+    }
+};

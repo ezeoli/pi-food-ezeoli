@@ -1,6 +1,7 @@
 import { GET_RECIPES } from "../actions";
 import { GET_DETAILS } from "../actions";
 import { GET_BY_NAME } from "../actions";
+import {RESET_DETAIL} from "../actions";
 
 export const initialState = {
     recipes: [],
@@ -30,7 +31,12 @@ function rootReducer (state=initialState, action) {
             ...state,
             recipes: action.payload,
         }      
-
+        case RESET_DETAIL:
+             return{
+        ...state,
+        details: [''],
+        notFound:''
+        }    
             default:
                 return state;
         }

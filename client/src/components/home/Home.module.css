@@ -36,3 +36,18 @@
     margin-left: 50px;
     margin-bottom: 20px;
   }
+  .refresh {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.603);
+    border-color: transparent;
+    color: rgb(15, 15, 15);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.refresh:hover{
+    color: rgba(255, 255, 255, 0.8);
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.8);
+}

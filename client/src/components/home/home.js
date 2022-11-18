@@ -5,17 +5,22 @@ import { Link } from "react-router-dom";
 import { getRecipes } from "../../redux/actions";
 
 
-import Card from "../card/card";
-import NavBar from "../navBar/navBar";
+import Card from "../card/Card";
+
 
 import styles from './Home.module.css'
+
 
 
 export default function Home (){
 
     const dispatch = useDispatch();
     const allRecipes = useSelector((state) => state.recipes )
-
+    
+function handleOnClick(e){
+    e.preventDefault();
+    dispatch(getRecipes())  
+    }
     
 
     useEffect(() => {
@@ -27,7 +32,7 @@ export default function Home (){
        
 
      <div className={styles.bkg}>
-             
+            <button onClick = {e => handleOnClick(e)} className={styles.refresh}> Clear Filters</button> 
         <div className={styles.cards}>
                 
             {allRecipes&&allRecipes.map( e => {
