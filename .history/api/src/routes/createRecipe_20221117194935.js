@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const {  Op } = require('sequelize');
-const{Recipe,Diet} = require('../db')
+const{Recipe,TypeOfDiet} = require('../db')
 const router = Router();
 
 router.post('/', async (req,res) => {
@@ -9,7 +9,6 @@ router.post('/', async (req,res) => {
         resume,
         healthScore,
        howToMake,
-       image,
         createdInDb,
         typeDiets
     } = req.body;
@@ -24,7 +23,6 @@ router.post('/', async (req,res) => {
         name,
         resume,
         healthScore,
-        image,
         howToMake,
        // diets,
         createdInDb
@@ -32,8 +30,8 @@ router.post('/', async (req,res) => {
 
 
 //where:{name:typeDiets }
-let dietTypeDb = await Diet.findAll( { where:{[Op.or]:[{name:typeDiets}]  }})
-     createRecipe.addDiet(dietTypeDb)
+let dietTypeDb = await TypeOfDiet.findAll( { where:{[Op.or]:[{name:typeDiets}]  }})
+     createRecipe.addTypeOfDiet(dietTypeDb)
     res.status(201).send('The new recipe was created')   
 
 }catch(err){

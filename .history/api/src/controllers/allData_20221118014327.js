@@ -27,7 +27,7 @@ const getAllRecipes = async() =>{
    const recipesTotal = await getAllRecipes();
    
    if(id){
-           let recipeId = await recipesTotal.filter((r) => r.id == id);
+           let recipeId = await recipesTotal.filter((r) => r.id === id);
            
          return recipeId ;
     };

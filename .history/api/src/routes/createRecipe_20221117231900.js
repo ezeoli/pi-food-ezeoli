@@ -9,7 +9,6 @@ router.post('/', async (req,res) => {
         resume,
         healthScore,
        howToMake,
-       image,
         createdInDb,
         typeDiets
     } = req.body;
@@ -24,7 +23,6 @@ router.post('/', async (req,res) => {
         name,
         resume,
         healthScore,
-        image,
         howToMake,
        // diets,
         createdInDb

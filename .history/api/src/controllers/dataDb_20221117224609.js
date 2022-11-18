@@ -1,4 +1,4 @@
-const {Recipe,Diet} = require('../db');
+const {Recipe,TypeOfDiet} = require('../db');
 
 
 
@@ -6,7 +6,7 @@ const getRecipesDb = async () => {
     
   const dbInfo = await Recipe.findAll({
       include:{
-          model: Diet,
+          model: TypeOfDiet,
            attributes:['name'],
           through:{
             attributes: [],
@@ -20,6 +20,7 @@ const getRecipesDb = async () => {
           id: recipe.id,
           name: recipe.name,
           resume: recipe.resume,
+          score: recipe.score,
           healthScore: recipe.healthScore,
           image: recipe.image,
           howToMake: recipe.howToMake,
@@ -30,6 +31,6 @@ const getRecipesDb = async () => {
   return response;
   };
 
-  const getRecipeByIdFromDb = (id) => Recipe.findByPk(id, { include: Diet });
+const getRecipeByIdFromDb = (id) => Recipe.findByPk(id, { include: TypeOfDiet });
 
 module.exports = {getRecipesDb,getRecipeByIdFromDb};

@@ -30,6 +30,6 @@ const getRecipesDb = async () => {
   return response;
   };
 
-  const getRecipeByIdFromDb = (id) => Recipe.findByPk(id, { include: Diet });
+const getRecipeByIdFromDb = (id) => Recipe.findByPk(id);
 
 module.exports = {getRecipesDb,getRecipeByIdFromDb};

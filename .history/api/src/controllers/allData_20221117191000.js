@@ -15,24 +15,19 @@ const getAllRecipes = async() =>{
    } ;
      
    
-    const getRecipeByID = async (id) => {
-   // try {
-    //const  isFromDb = id.includes("-");
-    //return isFromDb ? 
-   // getRecipeByIdFromDb(id)
-   // : getRecipeByIdFromApi(id)  
-   // } catch (error) {
-    //console.log("Something wrong during request information by ID");
-   //}
-   const recipesTotal = await getAllRecipes();
-   
-   if(id){
-           let recipeId = await recipesTotal.filter((r) => r.id == id);
-           
-         return recipeId ;
+    const getRecipeByID = (id) => {
+    try {
+    const  isFromDb = id.includes("-");
+    return isFromDb ? 
+    getRecipeByIdFromDb(id)
+    : getRecipeByIdFromApi(id)  
+    } catch (error) {
+    console.log("Something wrong during request information by ID");
+    }
+    
     };
    
-};
+    
     
 
 module.exports = {getAllRecipes,getRecipeByID};

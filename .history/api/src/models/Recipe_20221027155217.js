@@ -24,23 +24,10 @@ module.exports = (sequelize) => {
     },
    
    healthScore:{
-    type: DataTypes.FLOAT,
-      defaultValue: 0,
-      validate:{
-        min:0,
-        max:100,
-        isNumber(value){
-          if(isNaN(value)) throw new Error('healthScore must be a number')
-        }
-      }    
-        },
-
-    image: {
-      type: DataTypes.STRING,
-      defaultValue:"https://www.trecebits.com/wp-content/uploads/2020/05/Cocina-800x445.jpg",
+    type: DataTypes.STRING,
       allowNull: true,
     },
-    
+
     howToMake:{
       type: DataTypes.TEXT,
       allowNull: true,

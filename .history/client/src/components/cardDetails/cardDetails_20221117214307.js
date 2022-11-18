@@ -52,8 +52,15 @@ const RecipeDetail = ({match}) => {
                       dangerouslySetInnerHTML={{__html: p.resume}}
                     /></h5>
                 <h5 className={styles.typee}><p className={styles.TitulosDetalles}>HOW TO MAKE IT:</p> { p.howToMake &&
-              p.howToMake
-            }</h5>
+              p.howToMake[0].map(e=>{
+              return(
+              <p key={e.id} >
+                <div> STEP {e.number}</div>
+                
+                <div> {e.step} </div>
+              </p> 
+            )
+           })}</h5>
            </div>
           </div>
           </div>

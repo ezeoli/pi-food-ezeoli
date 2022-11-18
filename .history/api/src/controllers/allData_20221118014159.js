@@ -15,7 +15,7 @@ const getAllRecipes = async() =>{
    } ;
      
    
-    const getRecipeByID = async (id) => {
+    const getRecipeByID = (id) => {
    // try {
     //const  isFromDb = id.includes("-");
     //return isFromDb ? 
@@ -24,10 +24,10 @@ const getAllRecipes = async() =>{
    // } catch (error) {
     //console.log("Something wrong during request information by ID");
    //}
-   const recipesTotal = await getAllRecipes();
+   const recipesTotal =  getAllRecipes();
    
    if(id){
-           let recipeId = await recipesTotal.filter((r) => r.id == id);
+           let recipeId =  recipesTotal.filter((r) => r.id === id);
            
          return recipeId ;
     };

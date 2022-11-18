@@ -31,14 +31,11 @@ module.exports = (sequelize) => {
         max:100,
         isNumber(value){
           if(isNaN(value)) throw new Error('healthScore must be a number')
-        }
-      }    
-        },
+    },
 
     image: {
       type: DataTypes.STRING,
-      defaultValue:"https://www.trecebits.com/wp-content/uploads/2020/05/Cocina-800x445.jpg",
-      allowNull: true,
+      defaultValue:"https://www.trecebits.com/wp-content/uploads/2020/05/Cocina-800x445.jpg"
     },
     
     howToMake:{
