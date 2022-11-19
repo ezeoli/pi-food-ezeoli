@@ -2,6 +2,10 @@ import { GET_RECIPES } from "../actions";
 import { GET_DETAILS } from "../actions";
 import { GET_BY_NAME } from "../actions";
 import {RESET_DETAIL} from "../actions";
+import {FILTER_RECIPES} from "../actions";
+import {FILTER_ORIGIN} from "../actions";
+import {SORT_RECIPES } from "../actions";
+
 
 export const initialState = {
     recipes: [],
@@ -41,19 +45,21 @@ function rootReducer (state=initialState, action) {
         notFound:''
         }
 
-        case "FILTER_RECIPES":
+        case FILTER_RECIPES:
             const listedRecipes= state.allRecipes
             const recipesApi= listedRecipes.filter(recipe => !recipe.createdInDB)
             const recipesDB= listedRecipes.filter(recipe => recipe.createdInDB)
             const filteredDB = recipesDB.filter(recipe => recipe.diets.includes(action.payload))
-            const filtered = action.payload === 'default' ? listedRecipes
+            const alternativeFilter = recipesApi.filter(recipe=>recipe[action.payload] || recipe.diets.includes(action.payload))
+            const filtered = action.payload === 'default' ? listedRecipes : alternativeFilter.concat(filteredDB)
             return {
               ...state,
-              filtered: filtered,
-              recipes: filtered,
+              filtered: (action.payload === 'default') ? listedRecipes : filtered,
+              recipes: (action.payload === 'default') ? listedRecipes : filtered,
               notFound: (filtered.length===0) ? 'No se encontraron recetas' : ''
             };
-        case "SORT_RECIPES":
+       
+            case "SORT_RECIPES":
       const sorted = state.filtered.length ? state.filtered : state.allRecipes
       if (action.payload === "asc") (sorted.sort((a,b) => a.name.localeCompare(b.name)))
       if(action.payload ==='desc') (sorted.sort((a,b) => b.name.localeCompare(a.name)))
@@ -76,7 +82,7 @@ function rootReducer (state=initialState, action) {
         recipes: sorted
         
       }    
-      case 'FILTER_ORIGIN':
+      case FILTER_ORIGIN:
       const filtradasPrevias = state.filtered.length ? state.filtered : state.allRecipes      
       const filtradasDB = filtradasPrevias.filter(recipe => recipe.createdInDb)     
       if(action.payload === 'db' && filtradasDB.length ) {return ({...state, recipes:filtradasDB, notFound:''})}
