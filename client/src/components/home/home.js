@@ -77,7 +77,7 @@ export default function Home (){
 
      <div className={styles.bkg}>
         <div className={styles.filterContainer}>
-            <button onClick = {e => handleOnClick(e)} className={styles.filter}> Clear Filters</button>
+            <button onClick = {e => handleOnClick(e)} className={styles.filter}> Reset Filters</button>
             <select name="" id="" value={sort} className={styles.filter} onChange={e=>handleSort(e)}>
                 <option hidden> Sort recipes</option>
                 <option value='asc'>Ascendant A-Z</option>
