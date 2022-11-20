@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { getRecipes ,getDiets,resetRecipes, filterRecipes, sortRecipes,filterOrigin} from "../../redux/actions";
 
 
-import Card from "../card/Card";
+import Card from "../card/card";
 import Pagination from '../pagination/Pagination';
 import Loading from '../loading/Loading';
 import styles from './Home.module.css';
@@ -89,15 +89,15 @@ export default function Home (){
                 <option hidden> Filter by diet </option>
                 <option value='default' >All</option>
                 <option value="gluten free">Gluten Free</option>
-                <option value="ketogenic">Ketogenic</option>
-                <option value="vegetarian">Vegetarian </option>
-                <option value="lacto-vegetarian">Lacto-Vegetarian </option>
-                <option value="lacto ovo vegetarian">Ovo-Vegetarian</option>
-                <option value="vegan">Vegan</option>
-                <option value="pescatarian">Pescatarian</option>
-                <option value="paleolithic">Paleolithic</option>
-                <option value="primal">Primal</option>
-                <option value="whole 30">Whole 30</option>
+                    <option value="ketogenic">Ketogenic</option>
+                    <option value="vegetarian">Vegetarian </option>
+                    <option value="lacto-vegetarian">Lacto-Vegetarian </option>
+                    <option value="lacto ovo vegetarian">Ovo-Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="pescatarian">Pescatarian</option>
+                    <option value="paleolithic">Paleolithic</option>
+                    <option value="primal">Primal</option>
+                    <option value="whole 30">Whole 30</option>
             </select>
             <select value={filterO} onChange={e=>handleFilterOrigin(e)} className={styles.filter} >
                 <option hidden> Filter by origin </option>

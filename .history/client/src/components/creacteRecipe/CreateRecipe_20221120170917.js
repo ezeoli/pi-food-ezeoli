@@ -140,7 +140,7 @@ function handleDelete(e){
                     })}
                     
                 </select >
-                {errors.hasOwnProperty('name') || errors.hasOwnProperty('resume') || errors.hasOwnProperty('image') || errors.hasOwnProperty('healthScore')?  <p className={styles.adv}> Please complete all the inputs in order to create your recipe</p> : <button disabled={input.name  && input.resume ? false : true} type='submit' className={!input.name && !input.resume ? styles.correct : styles.incorrect}> Create It</button> }
+                {errors.hasOwnProperty('name') || errors.hasOwnProperty('resume') || errors.hasOwnProperty('image') || errors.hasOwnProperty('healthScore')?  <p className={styles.adv}> Please complete all the inputs in order to create your recipe</p> : <button disabled={input.name  && input.resume ? false : true} type='submit' className={styles.correct}> Create It</button> }
                
             </form>
             

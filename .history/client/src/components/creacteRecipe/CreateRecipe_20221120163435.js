@@ -10,6 +10,7 @@ import styles from './CreateRecipe.module.css'
 export default function CreateRecipe() {
     const dispatch = useDispatch()
     const listDiets = useSelector((state) => state.diets )
+    const [ableToSubmit, setAbleToSubmit]= useState(true)
     const [errors,setErrors]=useState({})      // este estado local es para, las validaciones(del formulario controlado)
     const [input,setInput] = useState({
         name :'',
@@ -25,9 +26,9 @@ export default function CreateRecipe() {
     if(!input.name) errors.name= 'Please put the title of the recipe'
     if(!input.resume) errors.resume= 'Please put the resume of the recipe'
     if(input.healthScore<0 || input.healthScore>100 )  errors.healthScore='Put a healthScore between 0-100'
-    
+    (!errors.name&&!errors.resume && !errors.healthScore) ?  setAbleToSubmit(false) : setAbleToSubmit(true)
     return errors
-    }
+}
     // console.log(input);
     useEffect(() => {
         dispatch(getDiets())
@@ -36,13 +37,13 @@ export default function CreateRecipe() {
         function handleChange(e){
         setInput({
             ...input,
-    [e.target.name] : e.target.value})
+    [e.target.name] : e.target.value
+})
         setErrors(controlForm({
             ...input,
             [e.target.name] : e.target.value    // me copio todo lo que venga del formulario , en el caso de que en alguno
         }))                               // no cumpla con las validaciones, se va a poner un texto advirtiendo
-    }
-
+}
 function handleSelect(e){
     setInput({
         ...input,
@@ -74,7 +75,7 @@ function handleDelete(e){
         <div className={styles.container}>
             <Link to ='/home' ><button className={styles.btn}>Return Home</button></Link>
             <h1 className={styles.h1}>Create your recipe</h1>
-            <form onSubmit={(e) => {handleSubmit(e)}} className={styles.form}>
+            <form  className={styles.form}>
                 <div>
                     <label>Name:</label>
                     <input
@@ -140,7 +141,7 @@ function handleDelete(e){
                     })}
                     
                 </select >
-                {errors.hasOwnProperty('name') || errors.hasOwnProperty('resume') || errors.hasOwnProperty('image') || errors.hasOwnProperty('healthScore')?  <p className={styles.adv}> Please complete all the inputs in order to create your recipe</p> : <button disabled={input.name  && input.resume ? false : true} type='submit' className={!input.name && !input.resume ? styles.correct : styles.incorrect}> Create It</button> }
+                {errors.hasOwnProperty('name') || errors.hasOwnProperty('resume') || errors.hasOwnProperty('image') || errors.hasOwnProperty('healthScore')?  <p className={styles.adv}> Please complete all the inputs in order to create your recipe</p> : <button className={!ableToSubmit ? styles.buttonSubmit : styles.buttonDisabled} disabled={setAbleToSubmit} type='submit' onClick={(e) => {handleSubmit(e)}}> Create it</button>  }
                
             </form>
             

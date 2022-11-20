@@ -50,7 +50,7 @@
     text-decoration: none;
 
 }
-.incorrect{
+.incorret{
   -webkit-border-radius: 10;
     -moz-border-radius: 10;
     border-radius: 10px;
@@ -61,7 +61,12 @@
   padding: 10px 30px 10px 30px;
   text-decoration: none;
 }
-
+.correct:hover {
+    
+    
+    text-decoration: none;
+    cursor: pointer;
+  }
   .incorrect:hover {
     
     
