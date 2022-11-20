@@ -105,7 +105,7 @@ export default function Home (){
                 <option value='db' >Created</option>
             </select> 
         </div>    
-        
+     <div className={styles.pagination} >
         <Pagination
                             recipesPerPage={recipesPerPage}
                             allRecipes={allRecipes.length}
@@ -115,6 +115,8 @@ export default function Home (){
                             isActive={isActive}
                             currentPage={currentPage}
                             />
+        </div>   
+        
         
         <div className={styles.cards}>
                 
