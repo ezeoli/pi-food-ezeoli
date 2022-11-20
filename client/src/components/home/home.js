@@ -2,13 +2,13 @@ import React from "react"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getRecipes , filterRecipes, sortRecipes,filterOrigin} from "../../redux/actions";
+import { getRecipes ,getDiets,resetRecipes, filterRecipes, sortRecipes,filterOrigin} from "../../redux/actions";
 
 
 import Card from "../card/Card";
-
-
-import styles from './Home.module.css'
+import Pagination from '../pagination/Pagination';
+import Loading from '../loading/Loading';
+import styles from './Home.module.css';
 
 
 
@@ -59,18 +59,25 @@ export default function Home (){
         setCurrentPage(1)
         setIsActive(1)
     }    
-
+    
+    const pagination = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
     useEffect(() => {
-        dispatch(getRecipes())  
+        dispatch(getRecipes())
+        dispatch(getDiets()) 
+        return ()=>{
+            dispatch(resetRecipes())
+        } 
     },[dispatch]);
 
-    console.log(allRecipes);
+    console.log(diets);
     return (
        
 
      <div className={styles.bkg}>
-        <div className={styles.cards}>
-            <button onClick = {e => handleOnClick(e)} className={styles.refresh}> Clear Filters</button>
+        <div className={styles.filterContainer}>
+            <button onClick = {e => handleOnClick(e)} className={styles.filter}> Clear Filters</button>
             <select name="" id="" value={sort} className={styles.filter} onChange={e=>handleSort(e)}>
                 <option hidden> Sort recipes</option>
                 <option value='asc'>Ascendant A-Z</option>
@@ -81,7 +88,16 @@ export default function Home (){
             <select name="" id="" className={styles.filter} value={filter} onChange={e=>handleFilterDiet(e)}>
                 <option hidden> Filter by diet </option>
                 <option value='default' >All</option>
-                {diets.length>0 && diets.map((diet) => {return <option key = {diet.id}value={diet.name}>{diet.name}</option>})}
+                <option value="gluten free">Gluten Free</option>
+                    <option value="ketogenic">Ketogenic</option>
+                    <option value="vegetarian">Vegetarian </option>
+                    <option value="lacto-vegetarian">Lacto-Vegetarian </option>
+                    <option value="lacto ovo vegetarian">Ovo-Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="pescatarian">Pescatarian</option>
+                    <option value="paleolithic">Paleolithic</option>
+                    <option value="primal">Primal</option>
+                    <option value="whole 30">Whole 30</option>
             </select>
             <select value={filterO} onChange={e=>handleFilterOrigin(e)} className={styles.filter} >
                 <option hidden> Filter by origin </option>
@@ -89,17 +105,28 @@ export default function Home (){
                 <option value='db' >Created</option>
             </select> 
         </div>    
+        
+        <Pagination
+                            recipesPerPage={recipesPerPage}
+                            allRecipes={allRecipes.length}
+                            pagination={pagination}
+                            setCurrentPage={setCurrentPage}
+                            setIsActive={setIsActive}
+                            isActive={isActive}
+                            currentPage={currentPage}
+                            />
+        
         <div className={styles.cards}>
                 
-            {allRecipes&&allRecipes.map( e => {
+            {currentRecipes?currentRecipes.map( e => {
                 return (  
                     <Link to={'/recipes/' + e.id}>
                     <Card name={e.name} image={e.image} 
-                    diets={e.diets} 
+                    diets={e.diets} healthScore={e.healthScore}
                     key={e.id}/>  
                     </Link>
                     )  
-                })  
+                })  : <Loading/>
             }   
          </div>
         </div>  

@@ -21,17 +21,17 @@ const getAllRecipes = async() =>{
     return isFromDb ? 
    getRecipeByIdFromDb(id)
     : getRecipeByIdFromApi(id)  
-    } catch (error) {
+   } catch (error) {
     console.log("Something wrong during request information by ID");
    }
    //const recipesTotal = await getAllRecipes();
-   
+   //
    //if(id){
-   //        let recipeId = await recipesTotal.filter((r) => r.id == id);
-           
-   //      return recipeId ;
-   // };
-   
+   //       let recipeId = await recipesTotal.filter((r) => r.id == id);
+   //        
+   //     return recipeId ;
+    //};
+   //
 };
     
 

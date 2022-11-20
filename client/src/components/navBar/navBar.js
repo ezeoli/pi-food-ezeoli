@@ -3,7 +3,7 @@ import React, { useEffect , useState} from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../searchBar/SearchBar';
 import styles from './NavBar.module.css';
-import { useDispatch} from "react-redux";
+
 import {getRecipes} from '../../redux/actions/index'
 
 

@@ -3,7 +3,7 @@
     height: 100vh;
     background-image: url(../../icons/comida.jpg);
     display: flex;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
 }
 

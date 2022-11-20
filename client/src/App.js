@@ -5,7 +5,7 @@ import Landing from './components/landing/Landing'
 import Home from './components/home/Home'
 import RecipeDetail from './components/cardDetails/CardDetails'
 import NavBar from './components/navBar/NavBar';
-
+import CreateRecipe from './components/creacteRecipe/CreateRecipe';
 // 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route exact path = '/' component = {Landing}/>
         <Route exact path = '/home' component = {Home}/>
         <Route exact path="/recipes/:id" render={( {match}) => <RecipeDetail match={match} />}/>
-
+        <Route exact path ='/recipes' component={CreateRecipe}/>
       </Switch>
     </div>
     </BrowserRouter>
