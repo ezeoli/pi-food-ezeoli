@@ -39,8 +39,8 @@
 }
 .filterContainer{
     display: flex;
-    justify-content: space-around;
-    width: 60%;
+    justify-content: center;
+    width: 100%;
     gap:10px;
     margin-bottom: 25px;
     padding-top: 20px;
