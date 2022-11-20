@@ -30,7 +30,9 @@ const getRecipesDb = async () => {
   return response;
   };
 
-  const getRecipeByIdFromDb = (id) => Recipe.findByPk(id,
+  const getRecipeByIdFromDb = async (id) => {
+   
+    const dbInfo = await Recipe.findByPk(id,
     {
       include:{
           model: Diet,
@@ -42,5 +44,17 @@ const getRecipesDb = async () => {
       }    
     }  
   );
+  
+  return {
+    id: dbInfo.id,
+    name: dbInfo.name,
+    resume: dbInfo.resume,
+    healthScore: dbInfo.healthScore,
+    image: dbInfo.image,
+    howToMake: dbInfo.howToMake,
+    createdInDb: dbInfo.createdInDb,
+    diets:dbInfo.diets?.map((diet) => diet.name),
+}; 
 
+};
 module.exports = {getRecipesDb,getRecipeByIdFromDb};
