@@ -16,9 +16,18 @@ describe('Recipe routes', () => {
   }));
   beforeEach(() => Recipe.sync({ force: true })
     .then(() => Recipe.create(recipe)));
-  describe('GET /recipes', () => {
-    it('should get 200', () =>
-      agent.get('/recipes').expect(200)
-    );
+  
+  describe('GET /recipes/:id', () => {
+    it('should get 200', () =>{
+     return agent.get('/recipes/644387')
+     .then(res => {
+      expect(res.status).to.equal(200)
+    });
   });
+  it('should respond a recipe with the id and the correct name',()=>{
+    return agent.get("/recipes/782601")
+    .then(res => {
+      expect(res.body[0].name).to.equal('Red Kidney Bean Jambalaya')
+    })
+  })
 });

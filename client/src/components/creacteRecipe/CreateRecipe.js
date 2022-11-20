@@ -4,21 +4,13 @@ import {getDiets , postRecipes} from '../../redux/actions/index';
 import { useDispatch, useSelector } from "react-redux";
 import styles from './CreateRecipe.module.css'
 
-function controlForm (input){
-    const reg = new RegExp('^[0-9]+$');
-    let errors = {}
-    if(!input.name) errors.name= 'Please put the title of the recipe'
-    if(!input.resume) errors.resume= 'Please put the resume of the recipe'
-    if(input.healthScore<0 || input.healthScore>100 || !reg.test(input.healthScore)) errors.healthScore='Put a healthScore between 0-100'
-    
-    return errors
-}
+
 
 
 export default function CreateRecipe() {
     const dispatch = useDispatch()
     const listDiets = useSelector((state) => state.diets )
-    
+    const [ableToSubmit, setAbleToSubmit]= useState(true)
     const [errors,setErrors]=useState({})      // este estado local es para, las validaciones(del formulario controlado)
     const [input,setInput] = useState({
         name :'',
@@ -27,11 +19,22 @@ export default function CreateRecipe() {
         howTomake:'',
         diets:[]
     })
+
+    function controlForm (input){
+    const reg = new RegExp('^[0-9]+$');
+    let errors = {}
+    if(!input.name) errors.name= 'Please put the title of the recipe'
+    if(!input.resume) errors.resume= 'Please put the resume of the recipe'
+    if(input.healthScore<0 || input.healthScore>100 || !reg.test(input.healthScore)) errors.healthScore='Put a healthScore between 0-100'
+    (!errors.name&&!errors.resume && !errors.healthScore) ?  setAbleToSubmit(false) : setAbleToSubmit(true)
+    return errors
+}
     // console.log(input);
     useEffect(() => {
         dispatch(getDiets())
         },[dispatch])
- function handleChange(e){
+ 
+        function handleChange(e){
         setInput({
             ...input,
     [e.target.name] : e.target.value
@@ -72,7 +75,7 @@ function handleDelete(e){
         <div className={styles.container}>
             <Link to ='/home' ><button className={styles.btn}>Return Home</button></Link>
             <h1 className={styles.h1}>Create your recipe</h1>
-            <form onSubmit={(e) => {handleSubmit(e)}} className={styles.form}>
+            <form  className={styles.form}>
                 <div>
                     <label>Name:</label>
                     <input
@@ -138,7 +141,7 @@ function handleDelete(e){
                     })}
                     
                 </select >
-                {errors.hasOwnProperty('name') || errors.hasOwnProperty('resume') || errors.hasOwnProperty('image') || errors.hasOwnProperty('healthScore')?  <p className={styles.adv}> Please complete all the inputs in order to create your recipe</p> : <button type='submit' className={styles.correct}> Create it</button>  }
+                {errors.hasOwnProperty('name') || errors.hasOwnProperty('resume') || errors.hasOwnProperty('image') || errors.hasOwnProperty('healthScore')?  <p className={styles.adv}> Please complete all the inputs in order to create your recipe</p> : <button className={!ableToSubmit ? styles.buttonSubmit : styles.buttonDisabled} disabled={setAbleToSubmit} type='submit' onSubmit={(e) => {handleSubmit(e)}}> Create it</button>  }
                
             </form>
             

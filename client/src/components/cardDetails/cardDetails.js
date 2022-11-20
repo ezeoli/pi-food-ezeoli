@@ -22,12 +22,14 @@ const RecipeDetail = ({match}) => {
         return () => {
           dispatch(resetDetail())
         }
-      },[dispatch],id);
-   //{details.length && details[0]?
-    return (
+      },[],id);
+   
+     
+   //if (!p.length) return <Loading />;
+   return (
 
       <div>
-        
+       
       <div className={styles.dt}> 
            <Link to='/home'><button className={styles.btn}>BACK TO HOME </button> </Link>
            <h1 className={styles.title}> {p.name} </h1>
