@@ -27,7 +27,7 @@ const RecipeDetail = ({match}) => {
      
    //if (!p.length) return <Loading />;
    return (
-
+          
       <div>
        
       <div className={styles.dt}> 
