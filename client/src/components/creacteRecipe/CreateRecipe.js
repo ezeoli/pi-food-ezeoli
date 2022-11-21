@@ -21,9 +21,9 @@ export default function CreateRecipe() {
     })
 
     function controlForm (input){
-    const reg = new RegExp('^[0-9]+$');
+   
     let errors = {}
-    if(!input.name) errors.name= 'Please put the title of the recipe'
+    if(!input.name) errors.name= 'Please put the name of the recipe'
     if(!input.resume) errors.resume= 'Please put the resume of the recipe'
     if(input.healthScore<0 || input.healthScore>100 )  errors.healthScore='Put a healthScore between 0-100'
     
@@ -129,7 +129,7 @@ function handleDelete(e){
                     ) }
                 </div>
                 <div className={styles.form}>
-                    <label>How to make:</label>
+                    <label  >How to make:</label>
                     <input
                     type='text'
                     name='howToMake'
@@ -156,7 +156,7 @@ function handleDelete(e){
             
             {input.diets.map(e => {
                return(
-               <div >
+               <div className={styles.form2} >
                     <h5 className={styles.types}>{e}</h5>
                     <button className={styles.btnx} onClick={() => handleDelete(e)}>X</button>
                    
