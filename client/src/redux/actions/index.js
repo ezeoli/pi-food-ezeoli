@@ -8,6 +8,7 @@ export const FILTER_ORIGIN = 'FILTER_ORIGIN';
 export const SORT_RECIPES = 'SORT_RECIPES';
 export const GET_DIETS = 'GET_DIETS';
 export const RESET_RECIPES = 'RESET_RECIPES';
+export const POST_RECIPE = 'POST_RECIPE';
 
 
 export const getRecipes = () => async dispatch => {
@@ -77,7 +78,7 @@ export function sortRecipes(payload){
 
 export function resetRecipes(){
     return{
-        type: 'RESET_RECIPES'
+        type: RESET_RECIPES
     }
 };
 
@@ -85,7 +86,7 @@ export function postRecipes (payload){
     return async function(dispatch){
         var json = await axios.post(`http://localhost:3001/recipes`,payload);
         return  dispatch({
-            type: 'POST_RECIPE',
+            type: POST_RECIPE,
             json
             
         }) 

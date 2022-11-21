@@ -6,6 +6,8 @@ import {FILTER_RECIPES} from "../actions";
 import {FILTER_ORIGIN} from "../actions";
 import {SORT_RECIPES } from "../actions";
 import {GET_DIETS } from "../actions";
+import {RESET_RECIPES} from "../actions";
+import {POST_RECIPE} from "../actions";
 
 export const initialState = {
     recipes: [],
@@ -49,7 +51,7 @@ function rootReducer (state=initialState, action) {
             diets:action.payload}
 
         case FILTER_RECIPES:
-            const listedRecipes= state.allRecipes
+            const listedRecipes= state.filtered.length ? state.filtered : state.allRecipes
             const recipesApi= listedRecipes.filter(recipe => !recipe.createdInDB)
             const recipesDB= listedRecipes.filter(recipe => recipe.createdInDB)
             const filteredDB = recipesDB.filter(recipe => recipe.diets.includes(action.payload))
@@ -62,7 +64,7 @@ function rootReducer (state=initialState, action) {
               notFound: (filtered.length===0) ? 'No se encontraron recetas' : ''
             };
        
-      case "SORT_RECIPES":
+      case SORT_RECIPES:
       const sorted = state.filtered.length ? state.filtered : state.allRecipes
       if (action.payload === "asc") (sorted.sort((a,b) => a.name.localeCompare(b.name)))
       if(action.payload ==='desc') (sorted.sort((a,b) => b.name.localeCompare(a.name)))
@@ -94,13 +96,13 @@ function rootReducer (state=initialState, action) {
         ...state,
         recipes:state.allRecipes
       }
-      case "RESET_RECIPES":
+      case RESET_RECIPES:
       return{
         ...state,
         filtered:[],
         recipes:[]
       }
-      case 'POST_RECIPE':
+      case POST_RECIPE:
         return{
             ...state,
         }

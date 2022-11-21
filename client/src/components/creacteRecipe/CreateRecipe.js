@@ -1,5 +1,5 @@
 import React, {useEffect , useState} from "react";
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 import {getDiets , postRecipes} from '../../redux/actions/index';
 import { useDispatch, useSelector } from "react-redux";
 import styles from './CreateRecipe.module.css'
@@ -10,6 +10,7 @@ import styles from './CreateRecipe.module.css'
 export default function CreateRecipe() {
     const dispatch = useDispatch()
     const listDiets = useSelector((state) => state.diets )
+    const history = useHistory()
     const [errors,setErrors]=useState({})      // este estado local es para, las validaciones(del formulario controlado)
     const [input,setInput] = useState({
         name :'',
@@ -61,6 +62,7 @@ function handleSubmit(e){
         howToMake:'',
         diets:[]
     })
+    history.push('/home')
 }
 function handleDelete(e){
     setInput({
@@ -75,7 +77,8 @@ function handleDelete(e){
             <Link to ='/home' ><button className={styles.btn}>Return Home</button></Link>
             <h1 className={styles.h1}>Create your recipe</h1>
             <form onSubmit={(e) => {handleSubmit(e)}} className={styles.form}>
-                <div>
+            <div className={styles.section1}>
+                <div className={styles.form}>
                     <label>Name:</label>
                     <input
                     type='text'
@@ -87,7 +90,7 @@ function handleDelete(e){
                         <p className={styles.error}>{errors.name}</p>
                     ) }
                 </div>
-                <div>
+                 <div className={styles.form}>
                     <label>Resume:</label>
                     <input
                     type='text'
@@ -98,9 +101,11 @@ function handleDelete(e){
                     { errors.resume && (
                         <p className={styles.error}>{errors.resume}</p>
                     ) }
+                 </div>
                 </div>
-                <div>
-                    <label>Image</label>
+                <div className={styles.section2}>
+                <div className={styles.form}>
+                    <label>Image:</label>
                     <input
                     type='text'
                     name='image'
@@ -111,7 +116,7 @@ function handleDelete(e){
                         <p className={styles.error}>{errors.image}</p>
                     ) }
                 </div>
-                <div>
+                <div className={styles.form}>
                     <label>HealthScore:</label>
                     <input
                     type='text'
@@ -123,7 +128,7 @@ function handleDelete(e){
                         <p className={styles.error}>{errors.healthScore}</p>
                     ) }
                 </div>
-                <div>
+                <div className={styles.form}>
                     <label>How to make:</label>
                     <input
                     type='text'
@@ -132,7 +137,11 @@ function handleDelete(e){
                     onChange={(e) => {handleChange(e)}} 
                     />
                 </div>
-                <select onChange={(e) => handleSelect(e)} className={styles.select} >
+                </div>
+                <div className={styles.form1}>
+                <p className={styles.tipos2} > Type of Diets </p>
+                <select  onChange={(e) => handleSelect(e)} className={styles.select} >
+                    
                     {listDiets.map((t) => {
                     
                     return <option value={t}> {t} </option>
@@ -140,6 +149,7 @@ function handleDelete(e){
                     })}
                     
                 </select >
+                </div>
                 {errors.hasOwnProperty('name') || errors.hasOwnProperty('resume') || errors.hasOwnProperty('image') || errors.hasOwnProperty('healthScore')?  <p className={styles.adv}> Please complete all the inputs in order to create your recipe</p> : <button disabled={input.name  && input.resume ? false : true} type='submit' className={!input.name && !input.resume ? styles.correct : styles.incorrect}> Create It</button> }
                
             </form>

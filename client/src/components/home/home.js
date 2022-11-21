@@ -107,15 +107,15 @@ export default function Home (){
         </div>    
      <div className={styles.pagination} >
         <Pagination
-                            recipesPerPage={recipesPerPage}
-                            allRecipes={allRecipes.length}
-                            pagination={pagination}
-                            setCurrentPage={setCurrentPage}
-                            setIsActive={setIsActive}
-                            isActive={isActive}
-                            currentPage={currentPage}
-                            />
-        </div>   
+             recipesPerPage={recipesPerPage}
+             allRecipes={allRecipes.length}
+             pagination={pagination}
+             setCurrentPage={setCurrentPage}
+             setIsActive={setIsActive}
+             isActive={isActive}
+             currentPage={currentPage}
+             />
+      </div>   
         
         
         <div className={styles.cards}>
