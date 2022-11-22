@@ -1,5 +1,4 @@
 import { GET_RECIPES } from "../actions";
-import { GET_RECIPES_ERROR } from "../actions";
 import { GET_DETAILS } from "../actions";
 import { GET_BY_NAME } from "../actions";
 import {RESET_DETAIL} from "../actions";

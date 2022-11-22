@@ -35,7 +35,7 @@ const getRecipesDb = async () => {
   };
 
   const getRecipeByIdFromDb = async (id) => {
-   try {
+   
     const dbInfo = await Recipe.findByPk(id,
     {
       include:{
@@ -59,10 +59,6 @@ const getRecipesDb = async () => {
     createdInDb: dbInfo.createdInDb,
     diets:dbInfo.diets?.map((diet) => diet.name),
 }; 
-   } catch (error) {
-    console.log("Something wrong during request information");
-   }
-    
 
 };
 module.exports = {getRecipesDb,getRecipeByIdFromDb};

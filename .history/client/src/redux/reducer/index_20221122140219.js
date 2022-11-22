@@ -1,5 +1,4 @@
 import { GET_RECIPES } from "../actions";
-import { GET_RECIPES_ERROR } from "../actions";
 import { GET_DETAILS } from "../actions";
 import { GET_BY_NAME } from "../actions";
 import {RESET_DETAIL} from "../actions";
@@ -16,7 +15,6 @@ export const initialState = {
     details : [],
     diets :[],
     filtered:[],
-    error:'',
     notFound:''
 }
 
@@ -33,7 +31,7 @@ function rootReducer (state=initialState, action) {
         case GET_RECIPES_ERROR:
           return{
             ...state,
-            error:action.payload, 
+           alert("Not Match"), 
           }
         case GET_DETAILS:
             return {
