@@ -33,8 +33,7 @@ export default function Home (){
     
     function handleOnClick(e){
     e.preventDefault();
-    dispatch(getRecipes())
-    dispatch(resetRecipes())  
+    dispatch(getRecipes())  
     }
 
     function handleFilterDiet(e) {

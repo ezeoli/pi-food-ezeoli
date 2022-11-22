@@ -1,6 +1,5 @@
 import axios from 'axios';
 export const GET_RECIPES = 'GET_RECIPES';
-export const GET_RECIPES_ERROR = 'GET_RECIPES_ERROR';
 export const GET_DETAILS = 'GET_DETAILS';
 export const GET_BY_NAME = 'GET_BY_NAME';
 export const RESET_DETAIL = 'RESET_DETAIL';

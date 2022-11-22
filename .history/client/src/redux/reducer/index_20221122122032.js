@@ -43,8 +43,8 @@ function rootReducer (state=initialState, action) {
         case RESET_DETAIL:
              return{
         ...state,
-        details: [''],
         
+        notFound:''
         }
         case GET_DIETS:
           return  {...state, 
@@ -100,8 +100,7 @@ function rootReducer (state=initialState, action) {
       return{
         ...state,
         filtered:[],
-        recipes:[],
-        notFound:''
+        recipes:[]
       }
       case POST_RECIPE:
         return{

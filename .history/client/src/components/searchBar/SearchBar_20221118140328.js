@@ -1,7 +1,7 @@
  import React , {useState} from "react";
 
  import { useDispatch } from "react-redux";
- import {getRecipesByName,resetDetail} from '../../redux/actions/index';
+ import {getRecipesByName} from '../../redux/actions/index';
  
 import styles from './SearchBar.module.css'
 
@@ -12,10 +12,10 @@ import styles from './SearchBar.module.css'
 
      function handleSubmit (e){
          e.preventDefault(e)
-         dispatch(getRecipesByName(search)) 
+         dispatch(getRecipesByName(search))
         return setSearch('')
         setShow('')
-       
+        
       } 
       function handleInputName (e){
         return setSearch(e.target.value)

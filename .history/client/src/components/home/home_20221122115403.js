@@ -33,8 +33,7 @@ export default function Home (){
     
     function handleOnClick(e){
     e.preventDefault();
-    dispatch(getRecipes())
-    dispatch(resetRecipes())  
+    dispatch(getRecipes())  
     }
 
     function handleFilterDiet(e) {
@@ -106,7 +105,7 @@ export default function Home (){
                 <option value='db' >Created</option>
             </select> 
         </div>    
-        {notFound && <div className={styles.notFound}><h1 >No recipes </h1></div>}
+        {notFound && <div className={s.notFound}><h1 >No recipes found</h1></div>}
      <div className={styles.pagination} >
         <Pagination
              recipesPerPage={recipesPerPage}

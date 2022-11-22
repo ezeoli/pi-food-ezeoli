@@ -12,10 +12,11 @@ import styles from './SearchBar.module.css'
 
      function handleSubmit (e){
          e.preventDefault(e)
-         dispatch(getRecipesByName(search)) 
+         dispatch(getRecipesByName(search))
+         dispatch(resetDetail)
         return setSearch('')
         setShow('')
-       
+        
       } 
       function handleInputName (e){
         return setSearch(e.target.value)
