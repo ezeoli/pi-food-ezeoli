@@ -24,6 +24,7 @@ export default function Home (){
     const [filterO, setFilterO] = useState('')
     const[currentPage,setCurrentPage] =useState(1)                                             
     const[recipesPerPage,setrecipesPerPage]=useState(9)
+   
     const [isActive,setIsActive] = useState(1) 
                                
     const indexLastRecipe = currentPage * recipesPerPage                            

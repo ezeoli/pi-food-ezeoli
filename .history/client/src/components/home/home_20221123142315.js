@@ -24,6 +24,7 @@ export default function Home (){
     const [filterO, setFilterO] = useState('')
     const[currentPage,setCurrentPage] =useState(1)                                             
     const[recipesPerPage,setrecipesPerPage]=useState(9)
+    const [order, setOrder] = useState("");
     const [isActive,setIsActive] = useState(1) 
                                
     const indexLastRecipe = currentPage * recipesPerPage                            
@@ -49,7 +50,7 @@ export default function Home (){
         dispatch(sortRecipes(e.target.value))
         setCurrentPage(1)
         setIsActive(1)
-     
+        setOrder( e.target.value);
         setSort(e.target.value)  
     }
     function handleFilterOrigin(e){
