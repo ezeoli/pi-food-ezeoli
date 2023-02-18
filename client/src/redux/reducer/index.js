@@ -9,6 +9,7 @@ import {SORT_RECIPES } from "../actions";
 import {GET_DIETS } from "../actions";
 import {RESET_RECIPES} from "../actions";
 import {POST_RECIPE} from "../actions";
+import {LOADING} from "../actions";
 
 export const initialState = {
     recipes: [],
@@ -16,6 +17,7 @@ export const initialState = {
     details : [],
     diets :[],
     filtered:[],
+    loading: false,
     error:'',
     notFound:''
 }
@@ -38,6 +40,7 @@ function rootReducer (state=initialState, action) {
         case GET_DETAILS:
             return {
                 ...state,
+                loading: false,
                 details: action.payload,
             }  
          
@@ -113,9 +116,16 @@ function rootReducer (state=initialState, action) {
         return{
             ...state,
         }
+
+        case LOADING:
+          return {
+            ...state,
+            loading: true
+          }
             default:
                 return state;
         }
+        
     }
 
 export default rootReducer;    

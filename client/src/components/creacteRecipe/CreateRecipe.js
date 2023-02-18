@@ -2,7 +2,9 @@ import React, {useEffect , useState} from "react";
 import { Link , useHistory} from "react-router-dom";
 import {getDiets , postRecipes} from '../../redux/actions/index';
 import { useDispatch, useSelector } from "react-redux";
-import styles from './CreateRecipe.module.css'
+import styles from './CreateRecipe.module.css';
+import Swal from "sweetalert2";
+
 
 
 
@@ -19,6 +21,14 @@ export default function CreateRecipe() {
         howTomake:'',
         diets:[]
     })
+    const alertRecipe= () => {
+        Swal.fire({
+          title: `Your new recipe was created succesfully`,
+          text: "Thank you for your time.",
+          icon: "success",
+          confirmButtonText: "Ok",
+        })
+    };
 
     function controlForm (input){
    
@@ -53,7 +63,7 @@ function handleSelect(e){
 function handleSubmit(e){
     e.preventDefault();
     dispatch(postRecipes(input))
-    alert('Congratulations, The new recipe has been created!')
+    alertRecipe()
     setInput({
         name :'',
         resume:'',

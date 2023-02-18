@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch,useSelector} from 'react-redux';
 import styles from './CardDetail.module.css'
 import { Link } from "react-router-dom";
-import { getRecipeDetail, resetDetail  } from "../../redux/actions";
+import { getRecipeDetail, resetDetail ,loading } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import Loading from "../loading/Loading";
 
@@ -12,10 +12,8 @@ const RecipeDetail = ({match}) => {
     let dispatch = useDispatch()
     let id = match.params.id;
     let p = useSelector((state) =>state.details)
-    //const p= useSelector(state => state.getDetail.find(productId));
-  
-     // useSelector(state => console.log(state))
-   
+    const loading = useSelector(state => state.loading);
+    console.log(loading); 
       
      React.useEffect(()=> {
         dispatch(getRecipeDetail(id))
@@ -25,11 +23,11 @@ const RecipeDetail = ({match}) => {
       },[],id);
    
      
-   //if (!p.length) return <Loading />;
+   
    return (
           
-      <div>
-       
+    <div>
+      {  loading ? <Loading /> : 
       <div className={styles.dt}> 
            <Link to='/home'><button className={styles.btn}>BACK TO HOME </button> </Link>
            <h1 className={styles.title}> {p.name} </h1>
@@ -67,7 +65,7 @@ const RecipeDetail = ({match}) => {
            </div>
           </div>
           </div>
-       
+          }
        </div>
     );
   };

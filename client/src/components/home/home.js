@@ -25,7 +25,7 @@ export default function Home (){
     const[currentPage,setCurrentPage] =useState(1)                                             
     const[recipesPerPage,setrecipesPerPage]=useState(9)
     const [isActive,setIsActive] = useState(1) 
-                               
+    const [loading,setLoading] = useState(true)                          
     const indexLastRecipe = currentPage * recipesPerPage                            
     const indexFirstRecipe = indexLastRecipe - recipesPerPage                       
     const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)
@@ -35,6 +35,8 @@ export default function Home (){
     dispatch(getRecipes())
     dispatch(resetRecipes())  
     }
+    console.log(allRecipes);
+
 
     function handleFilterDiet(e) {
         e.preventDefault()
@@ -73,7 +75,7 @@ export default function Home (){
 
     console.log(diets);
     return (
-       
+      
 
      <div className={styles.bkg}>
         <div className={styles.filterContainer}>
@@ -118,10 +120,13 @@ export default function Home (){
              />
       </div>   
         
-        
+      
         <div className={styles.cards}>
-                
-            {currentRecipes?currentRecipes.map( e => {
+               
+            
+           
+            {!currentRecipes.length ? <Loading /> 
+            :   currentRecipes.map( e => {
                 return (  
                     <Link to={'/recipes/' + e.id}>
                     <Card name={e.name} image={e.image} 
@@ -129,12 +134,14 @@ export default function Home (){
                     key={e.id}/>  
                     </Link>
                     )  
-                })  : <Loading/>
-            }   
+                })  }
+             
+               
          </div>
         </div>  
        
-
+ 
                  
-    )     
+    )  
+      
 }   
