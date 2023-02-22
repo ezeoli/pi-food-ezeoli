@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch,useSelector} from 'react-redux';
 import styles from './CardDetail.module.css'
 import { Link } from "react-router-dom";
-import { getRecipeDetail, resetDetail ,loading } from "../../redux/actions";
-import { useEffect, useState } from "react";
+import { getRecipeDetail, resetDetail  } from "../../redux/actions";
+import Footer from "../footer/Footer";
 import Loading from "../loading/Loading";
 
 
@@ -26,7 +26,7 @@ const RecipeDetail = ({match}) => {
    
    return (
           
-    <div>
+    <div className={styles.bkg}>
       {  loading ? <Loading /> : 
       <div className={styles.dt}> 
            <Link to='/home'><button className={styles.btn}>BACK TO HOME </button> </Link>
@@ -64,8 +64,14 @@ const RecipeDetail = ({match}) => {
             }</h5>
            </div>
           </div>
+          <div>
+          <Footer/>
           </div>
+          </div>
+          
           }
+
+          
        </div>
     );
   };

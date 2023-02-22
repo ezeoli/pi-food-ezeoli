@@ -1,0 +1,19 @@
+.foot {
+    display: flex; 
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    background-color: #242423;
+    height: 6rem;
+  }
+  
+  .links {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .spanF {
+    color: white;
+    text-decoration: none;
+  }

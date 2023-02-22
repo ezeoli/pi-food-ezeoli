@@ -4,7 +4,7 @@ import {getDiets , postRecipes} from '../../redux/actions/index';
 import { useDispatch, useSelector } from "react-redux";
 import styles from './CreateRecipe.module.css';
 import Swal from "sweetalert2";
-
+import Footer from "../footer/Footer";
 
 
 
@@ -84,7 +84,7 @@ function handleDelete(e){
     return (
         <div className={styles.bkg}>
         <div className={styles.container}>
-            <Link to ='/home' ><button className={styles.btn}>Return Home</button></Link>
+            <Link to ='/home' ><button className={styles.btn}>Back to Home</button></Link>
             <h1 className={styles.h1}>Create your recipe</h1>
             <form onSubmit={(e) => {handleSubmit(e)}} className={styles.form}>
             <div className={styles.section1}>
@@ -173,7 +173,8 @@ function handleDelete(e){
                 </div>
             )})}
         </div>
-        </div>
+        <Footer/>
+     </div>
     )
 
 }

@@ -9,6 +9,7 @@ import Card from "../card/Card";
 import Pagination from '../pagination/Pagination';
 import Loading from '../loading/Loading';
 import styles from './Home.module.css';
+import Footer from "../footer/Footer";
 
 
 
@@ -25,7 +26,7 @@ export default function Home (){
     const[currentPage,setCurrentPage] =useState(1)                                             
     const[recipesPerPage,setrecipesPerPage]=useState(9)
     const [isActive,setIsActive] = useState(1) 
-    const [loading,setLoading] = useState(true)                          
+                             
     const indexLastRecipe = currentPage * recipesPerPage                            
     const indexFirstRecipe = indexLastRecipe - recipesPerPage                       
     const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)
@@ -138,6 +139,8 @@ export default function Home (){
              
                
          </div>
+         <Footer/>
+
         </div>  
        
  

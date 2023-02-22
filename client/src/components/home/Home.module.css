@@ -20,6 +20,21 @@
     margin-top: 8rem;
 
 }
+
+@media (max-width:850px){
+.cards{
+    display: grid;
+    grid-template-columns: 100% ;
+}
+}
+
+@media ( min-width:850px) and ( max-width:1250px){
+    .cards{
+        display: grid;
+        grid-template-columns: 50%  50%;
+    }
+    }
+    
 .notFound{
     width: 80%;
     height: 80%;
