@@ -14,7 +14,7 @@ import styles from './SearchBar.module.css'
          e.preventDefault(e)
          dispatch(getRecipesByName(search)) 
         return setSearch('')
-        setShow('')
+        
        
       } 
       function handleInputName (e){

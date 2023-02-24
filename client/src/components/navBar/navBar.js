@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../searchBar/SearchBar';
 import styles from './NavBar.module.css';
 
-import {getRecipes} from '../../redux/actions/index'
+
 
 
 
