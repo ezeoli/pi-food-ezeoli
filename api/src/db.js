@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
@@ -10,6 +10,7 @@ const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
+// eslint-disable-next-line no-undef
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
