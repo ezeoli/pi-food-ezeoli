@@ -12,6 +12,7 @@ import styles from './SearchBar.module.css'
 
      function handleSubmit (e){
          e.preventDefault(e)
+         if (!search) alert("You must enter a name");
          dispatch(getRecipesByName(search)) 
         return setSearch('')
         
