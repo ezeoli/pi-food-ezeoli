@@ -12,8 +12,8 @@ import styles from './SearchBar.module.css'
      
      const alertNoFound = () => {
       Swal.fire({
-        title: `There are no Sneackers with the combination of Characters entered:" ${input}"`,
-        text: "Please,try another combinations",
+        title: `You must enter a recipe`,
+        text: "Please,try enter a recipe",
         icon: "info",
         confirmButtonText: "Ok",
       })  }; 
