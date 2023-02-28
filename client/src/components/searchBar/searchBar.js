@@ -29,7 +29,7 @@ import styles from './SearchBar.module.css'
          <form onSubmit={(e) => {handleSubmit(e)}}>
          <h2>Search your recipe</h2>
          <input type='text' placeholder='search...' value={search} onChange={(e) => {handleInputName(e)}}></input>
-         <button  type='submit' className={styles.btnsearch} >Search</button>
+         
         </form>
 
      </div>
