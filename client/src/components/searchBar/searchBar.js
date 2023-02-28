@@ -34,10 +34,10 @@ import styles from './SearchBar.module.css'
       return (
      <div>
         <div className={styles.search}>
-         <form onClick={(e) => {handleSubmit(e)}}>
+         <form onSubmit={(e) => {handleSubmit(e)}}>
          <h2>Search your recipe</h2>
-         <FiSearch />
-         <input type='text' placeholder='search...' value={search} onChange={(e) => {handleInputName(e)}}></input>
+         
+         <input      type='text' placeholder='search...' value={search} onChange={(e) => {handleInputName(e)}}><FiSearch /></input>
          
         </form>
 
