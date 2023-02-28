@@ -34,7 +34,7 @@ import styles from './SearchBar.module.css'
       return (
      <div>
         <div className={styles.search}>
-         <form onSubmit={(e) => {handleSubmit(e)}}>
+         <form onClick={(e) => {handleSubmit(e)}}>
          <h2>Search your recipe</h2>
          <FiSearch />
          <input type='text' placeholder='search...' value={search} onChange={(e) => {handleInputName(e)}}></input>
